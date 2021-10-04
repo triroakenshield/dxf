@@ -1,6 +1,7 @@
 import DXFManager                       from    "./Internals/DXFManager";
 import Header                           from    "./Sections/Header/Header";
 import Tables                           from    "./Sections/Tables/Tables";
+import Block                            from    "./Sections/Blocks/Block";
 import Blocks                           from    "./Sections/Blocks/Blocks";
 import Classes                          from    "./Sections/Classes/Classes";
 import Objects                          from    "./Sections/Objects/Objects";
@@ -350,6 +351,11 @@ export default class DXFWriter extends DXFManager
             x, y, height, value
         );
         return this;
+    }
+
+    public addBlock(blockName: string): Block {
+        this.blocks.tables.addBlock(blockName);
+        return this.blocks.addBlock(blockName);
     }
 
     /**

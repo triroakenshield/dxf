@@ -10,16 +10,12 @@ export default class NameComponent implements DXFInterface
     set name        (value : string) { this._tag.value       = value;    }
 
     private readonly _tag : Tag;
-    
+
     public constructor(name: string, groupCode: number = 2) {
         this._tag = new Tag(groupCode, name);
     }
 
-    stringify(): string {
-        return this._tag.stringify();
-    }
+    stringify(): string { return this._tag.stringify(); }
 
-    tags(): Tag[] {
-        return [this._tag];
-    }
+    tags(): Tag[] { return [this._tag]; }
 }

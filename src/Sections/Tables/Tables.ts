@@ -21,12 +21,15 @@ export default class Tables extends DXFManager {
     set entities(value: Entities) {
         this._entities = value;
     }
+
     get layers(): Layer[] {
         return this._layers.layers;
     }
+
     get blockRecords(): BlockRecordTable {
         return this._blockRecords;
     }
+
     private             _vports         :   ViewPort;
     private             _ltypes         :   LineTypeTable;
     private readonly    _layers         :   LayerTable;
@@ -95,6 +98,10 @@ export default class Tables extends DXFManager {
 
     public addDIMStyle(name: string, flag: number) {
         this._dimstyles.addDIMStyle(name, flag);
+    }
+
+    public addBlock(blockName: string) {
+        this._blockRecords.addBlock(blockName);
     }
 
     public tags(): Tag[] {

@@ -2,39 +2,40 @@ import Tag          from    "../Tag";
 import DXFInterface from    "../Interfaces/DXFInterface";
 
 export default class TrueColorComponent implements DXFInterface {
+    
     get digit(): number {
         return this._digit;
     }
+
     set digit(value: number) {
         this._digit = value;
         this._color.groupCode = parseInt(`42${this.digit}`);
     }
-    get red(): number {
-        return this._red;
-    }
+
+    get red(): number {  return this._red; }
+
     set red(value: number) {
         this._red = value;
         this._color.value = this.toDecimal();
     }
-    get green(): number {
-        return this._green;
-    }
+
+    get green(): number { return this._green; }
+
     set green(value: number) {
         this._green = value;
         this._color.value = this.toDecimal();
     }
-    get blue(): number {
-        return this._blue;
-    }
 
-    set blue(value: number) {
-        this._blue = value;
-    }
+    get blue(): number { return this._blue; }
+
+    set blue(value: number) { this._blue = value; }
+
     private _red: number;
     private _green: number;
     private _blue: number;
     private _digit: number;
     private readonly _color: Tag;
+
     public constructor(red: number, green: number, blue: number, digit: number = 0) {
         this._red = red;
         this._green = green;
@@ -50,11 +51,7 @@ export default class TrueColorComponent implements DXFInterface {
         return parseInt(`${red}${green}${blue}`, 16);
     }
 
-    stringify(): string {
-        return this._color.stringify();
-    }
+    stringify(): string { return this._color.stringify(); }
 
-    tags(): Tag[] {
-        return [this._color];
-    }
+    tags(): Tag[] { return [this._color]; }
 };

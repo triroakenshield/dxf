@@ -12,7 +12,7 @@ import Polyline                                 from    "./Entities/Polyline";
 import Polyline3D                               from    "./Entities/Polyline3D";
 import DXFManager                               from    "../../Internals/DXFManager";
 
-export default class Entities extends DXFManager
+export default class Model extends DXFManager
 {
     get texts       () : Text[]          { return this._texts;       }
     get faces       () : Face[]          { return this._faces;       }
@@ -185,14 +185,11 @@ export default class Entities extends DXFManager
 
     public tags(): Tag[] {
         let tags: Tag[] = [];
-        tags.push(...this.makeEntityType('SECTION'));
-        tags.push(...this.makeName('ENTITIES'));
 
         tags.push(
             ...this.entitiesTags(this.entities())
         );
 
-        tags.push(...this.makeEntityType('ENDSEC'));
         return tags;
     }
 }

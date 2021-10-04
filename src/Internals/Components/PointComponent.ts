@@ -10,7 +10,7 @@ export default class PointComponent implements DXFInterface
     
     set y(value     : number) { this._y.value = value;  }
     set z(value     : number) { this._z.value = value;  }
-    set x(value     : number) {  this._x.value = value; }
+    set x(value     : number) {  this._x.value = value; }    
     set digit(value : number) {
         if (value <= 8 && value >= 0) {
             this._digit         = value;
@@ -20,7 +20,6 @@ export default class PointComponent implements DXFInterface
         }
     }
 
-    
     private readonly    _x     : Tag;
     private readonly    _y     : Tag;
     private readonly    _z     : Tag;
@@ -47,6 +46,7 @@ export default class PointComponent implements DXFInterface
         if (this._is3D) str += this._z.stringify();
         return str;
     }
+    
     tags() : Tag[]
     {
         if (this._is3D) return [this._x, this._y, this._z];

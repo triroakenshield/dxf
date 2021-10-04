@@ -11,12 +11,14 @@ export default class StandardComponent implements DXFInterface
             this._tags.push(new Tag(tag[0], tag[1]));
         });
     }
+    
     stringify() : string
     {
         return this._tags.reduce((str, tag) => {
             return `${str}${tag.stringify()}`;
         }, '');
     }
+
     tags() : Tag[]
     {
         return this._tags;

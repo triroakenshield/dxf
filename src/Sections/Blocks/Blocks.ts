@@ -15,7 +15,6 @@ export default class Blocks extends DXFManager {
     set paperHandle (value: string) { this._paperHandle = value;    }
     set tables      (value: Tables) { this._tables      = value;    }
 
-
     private _blocks         : Block[]   = [];
     private _modelHandle    : string    = '0';
     private _paperHandle    : string    = '0';
@@ -26,6 +25,12 @@ export default class Blocks extends DXFManager {
         this._tables = new Tables();
         this._blocks.push(new Block('*Model_Space'));
         this._blocks.push(new Block('*Paper_Space'));
+    }
+
+    public addBlock(blockName: string): Block {
+        var block = new Block(blockName);
+        this._blocks.push(block);
+        return block;
     }
 
     public tags(): Tag[] {

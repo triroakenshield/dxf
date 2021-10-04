@@ -9,15 +9,9 @@ export default class LineTypeComponent implements DXFInterface
 
     private readonly _name : Tag;
 
-    public constructor(name : string) {
-        this._name = new Tag(6, name);
-    }
+    public constructor(name : string) { this._name = new Tag(6, name); }
 
-    stringify(): string {
-        return this._name.stringify();
-    }
+    stringify(): string { return this._name.stringify(); }
 
-    tags(): Tag[] {
-        return [this._name];
-    }
+    tags(): Tag[] { return [this._name]; }
 };

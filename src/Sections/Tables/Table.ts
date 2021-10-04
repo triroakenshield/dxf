@@ -2,12 +2,10 @@ import Tag          from "../../Internals/Tag";
 import DXFManager   from "../../Internals/DXFManager";
 
 export default class Table extends DXFManager {
-    get tableName(): string {
-        return this._tableName;
-    }
-    public constructor(private _tableName: string) {
-        super();
-    }
+
+    get tableName(): string { return this._tableName; }
+
+    public constructor(private _tableName: string) { super(); }
 
     tags(): Tag[] {
         return [
