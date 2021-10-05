@@ -358,6 +358,14 @@ export default class DXFWriter extends DXFManager
         return this.blocks.addBlock(blockName);
     }
 
+    public addInsert(
+        blockName: string, 
+        x : number, y : number
+    ): DXFWriter {
+        this.entities.addInsert(blockName, x, y);
+        return this;
+    }
+
     /**
      * @return string get the dxf string.
      */

@@ -9,7 +9,7 @@ AC1021
   9
 $HANDSEED
   5
-2F
+31
   9
 $INSUNITS
   70
@@ -17,7 +17,7 @@ $INSUNITS
   9
 $VIEWCTR
   10
-50
+0
   20
 50
   0
@@ -67,7 +67,7 @@ AcDbViewportTableRecord
   21
 1
   12
-50
+0
   22
 50
   13
@@ -773,6 +773,24 @@ AcDbLine
   21
 100
   31
+0
+  0
+INSERT
+  5
+2F
+  100
+AcDbEntity
+  8
+0
+  100
+AcDbBlockReference
+  2
+test2
+  10
+-100
+  20
+100
+  30
 0
   0
 ENDSEC
