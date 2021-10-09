@@ -7,9 +7,10 @@ import Point                                    from    "./Entities/Point";
 import Circle                                   from    "./Entities/Circle";
 import Spline                                   from    "./Entities/Spline";
 import Ellipse                                  from    "./Entities/Ellipse";
-import Tag                                      from    "../../Internals/Tag";
 import Polyline                                 from    "./Entities/Polyline";
 import Polyline3D                               from    "./Entities/Polyline3D";
+import BlockReference                           from    "./Entities/BlockReference";
+import Tag                                      from    "../../Internals/Tag";
 import DXFManager                               from    "../../Internals/DXFManager";
 
 export default class Model extends DXFManager
@@ -24,6 +25,7 @@ export default class Model extends DXFManager
     get polylines3D () : Polyline3D[]    { return this._polylines3D; }
     get polylines   () : Polyline[]      { return this._polylines;   }
     get lines       () : Line[]          { return this._lines;       }
+    get blocks      () : BlockReference[] { return this._blockReferences; }
 
     private _points         :        Point[]    = [];
     private _lines          :         Line[]    = [];
@@ -35,9 +37,9 @@ export default class Model extends DXFManager
     private _ellipses       :      Ellipse[]    = [];
     private _faces          :         Face[]    = [];
     private _texts          :         Text[]    = [];
+    private _blockReferences : BlockReference[]  = [];
 
     public constructor() { super(); }
-
 
     public addLine(
         x_start : number, y_start : number,
@@ -126,6 +128,11 @@ export default class Model extends DXFManager
         this._texts.push(  new Text( new Point(x, y), height, value ) );
     }
 
+    public addInsert( blockName: string, x : number, y : number)
+    {
+        this._blockReferences.push(new BlockReference(blockName, new Point(x, y)));
+    }
+
     public boundingBox(): number[][]
     {
         const arrayX: number[] = [];
@@ -179,7 +186,8 @@ export default class Model extends DXFManager
             ...this.splines,
             ...this.ellipses,
             ...this.faces,
-            ...this.texts
+            ...this.texts,
+            ...this.blocks
         ];
     }
 

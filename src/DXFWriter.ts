@@ -145,7 +145,7 @@ export default class DXFWriter extends DXFManager
         x_end   : number, y_end   : number
     ) : DXFWriter
     {
-        this.entities.addLine(x_start, y_start, x_end, y_end);
+        this.entities.model.addLine(x_start, y_start, x_end, y_end);
         return this;
     }
 
@@ -163,7 +163,7 @@ export default class DXFWriter extends DXFManager
      */
     public addPolyline(points : number[][], flag : PolylineFlags): DXFWriter
     {
-        this.entities.addPolyline(points, flag);
+        this.entities.model.addPolyline(points, flag);
         return this;
     }
 
@@ -191,7 +191,7 @@ export default class DXFWriter extends DXFManager
             [top_left_x     ,    bottom_right_y]
         ];
 
-        this.entities.addPolyline(corners, PolylineFlags.Closed);
+        this.entities.model.addPolyline(corners, PolylineFlags.Closed);
         return this;
     }
 
@@ -203,7 +203,7 @@ export default class DXFWriter extends DXFManager
      * @returns {DXFWriter} return the instance of DXFWriter.
      */
     public addPolyline3D(points: number[][], flag: number): DXFWriter {
-        this.entities.addPolyline3D(points, flag);
+        this.entities.model.addPolyline3D(points, flag);
         return this;
     }
 
@@ -217,7 +217,7 @@ export default class DXFWriter extends DXFManager
      */
     public addPoint(x : number, y : number, z : number): DXFWriter
     {
-        this.entities.addPoint(x, y, z);
+        this.entities.model.addPoint(x, y, z);
         return this;
     }
 
@@ -231,7 +231,7 @@ export default class DXFWriter extends DXFManager
      */
     public addCircle(x_center : number, y_center : number, radius : number) : DXFWriter
     {
-        this.entities.addCircle(x_center, y_center, radius);
+        this.entities.model.addCircle(x_center, y_center, radius);
         return this;
     }
 
@@ -253,7 +253,7 @@ export default class DXFWriter extends DXFManager
         start_angle : number, endAngle : number
     ): DXFWriter
     {
-        this.entities.addArc(x_center, y_center, radius, start_angle, endAngle);
+        this.entities.model.addArc(x_center, y_center, radius, start_angle, endAngle);
         return this;
     }
 
@@ -281,7 +281,7 @@ export default class DXFWriter extends DXFManager
         flag           : SplineFlags, knots      : number[]  , weights     : number[]
     ) : DXFWriter
     {
-        this.entities.addSpline(control_points, fit_points, curve_degree, flag, knots, weights);
+        this.entities.model.addSpline(control_points, fit_points, curve_degree, flag, knots, weights);
         return this;
     }
 
@@ -300,7 +300,7 @@ export default class DXFWriter extends DXFManager
         x_center: number, y_center: number, x_major_axis: number, y_major_axis: number,
         ratio_minor_axis: number, start_parameter: number, end_parameter: number
     ): DXFWriter {
-        this.entities.addEllipse(
+        this.entities.model.addEllipse(
             x_center, y_center, x_major_axis, y_major_axis, ratio_minor_axis,
             start_parameter, end_parameter
         );
@@ -328,7 +328,7 @@ export default class DXFWriter extends DXFManager
         x_third: number, y_third: number, z_third: number,
         x_fourth: number, y_fourth: number, z_fourth: number
     ): DXFWriter {
-        this.entities.add3DFace(x_first, y_first, z_first,
+        this.entities.model.add3DFace(x_first, y_first, z_first,
             x_second, y_second, z_second,
             x_third, y_third, z_third,
             x_fourth, y_fourth, z_fourth
@@ -347,7 +347,7 @@ export default class DXFWriter extends DXFManager
         x: number, y: number,
         height: number, value: string,
     ): DXFWriter {
-        this.entities.addText(
+        this.entities.model.addText(
             x, y, height, value
         );
         return this;
@@ -362,7 +362,7 @@ export default class DXFWriter extends DXFManager
         blockName: string, 
         x : number, y : number
     ): DXFWriter {
-        this.entities.addInsert(blockName, x, y);
+        this.entities.model.addInsert(blockName, x, y);
         return this;
     }
 
