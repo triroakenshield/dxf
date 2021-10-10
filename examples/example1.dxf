@@ -9,7 +9,7 @@ AC1021
   9
 $HANDSEED
   5
-35
+37
   9
 $INSUNITS
   70
@@ -812,6 +812,8 @@ AcDbEntity
 0
   100
 AcDbBlockReference
+  66
+1
   2
 test2
   10
@@ -819,6 +821,40 @@ test2
   20
 0
   30
+0
+  0
+ATTRIB
+  5
+35
+  100
+AcDbEntity
+  8
+0
+  100
+AcDbText
+  10
+0
+  20
+0
+  30
+0
+  40
+2
+  1
+tt222
+  100
+AcDbAttribute
+  2
+testAtr
+  70
+0
+  0
+SEQEND
+  5
+3B
+  100
+AcDbEntity
+  8
 0
   0
 ENDSEC

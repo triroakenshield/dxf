@@ -1,6 +1,7 @@
 import Point from "./Point";
 import Entity   from    "../Entity";
 import Attribute from "../Entities/Attribute";
+import Seqend from "../Entities/Seqend";
 import Tag from "../../../Internals/Tag";
 
 export default class BlockReference extends Entity {
@@ -39,17 +40,21 @@ export default class BlockReference extends Entity {
     }
 
     public tags(): Tag[] {
-        let tags: Tag[] =  [
-            ...super.tags(),
-            ...this.makeName(this._name),
-            ...this.makePoint(this._point.x, this._point.y, this._point.z, true)
-        ];
+        let tags: Tag[] = [];
+
+        tags.push(...super.tags());
+
+        if (this.attributes.length > 0) { tags.push(...this.makeStandard([[66, 1]])); }
+
+        tags.push(...this.makeName(this._name));
+        tags.push(...this.makePoint(this._point.x, this._point.y, this._point.z, true));
 
         if (this.attributes.length > 0) {
             this.attributes.forEach((entity) => {
                 tags.push(...entity.tags());
             });
-            tags.push(...this.seqend());
+            var seq = new Seqend();
+            tags.push(...seq.tags());
         }
 
         return tags;
