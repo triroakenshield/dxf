@@ -9,7 +9,7 @@ AC1021
   9
 $HANDSEED
   5
-35
+33
   9
 $INSUNITS
   70
@@ -701,7 +701,7 @@ AcDbBlockBegin
   2
 test2
   70
-2
+0
   10
 0
   20
@@ -716,6 +716,8 @@ test2
 LINE
   5
 2F
+330
+29
   100
 AcDbEntity
   8
@@ -738,6 +740,8 @@ AcDbLine
 ATTDEF
   5
 31
+330
+29
   100
 AcDbEntity
   8
@@ -762,6 +766,8 @@ AcDbAttributeDefinition
 testAtr
   70
 0
+280
+     1
   0
 ENDBLK
   5
@@ -801,24 +807,6 @@ AcDbLine
   21
 100
   31
-0
-  0
-INSERT
-  5
-33
-  100
-AcDbEntity
-  8
-0
-  100
-AcDbBlockReference
-  2
-test2
-  10
-0
-  20
-0
-  30
 0
   0
 ENDSEC

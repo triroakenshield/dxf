@@ -1,26 +1,29 @@
-import Tag          from "../../Internals/Tag";
-import DXFManager   from "../../Internals/DXFManager";
-import Model        from "../../Sections/Entities/Model";
+import Tag from "../../Internals/Tag";
+import DXFManager from "../../Internals/DXFManager";
+import Model from "../../Sections/Entities/Model";
 
 export default class Block extends DXFManager {
 
-    get handleToOwner() : string { return this._handleToOwner; }
-    get blockName()     : string { return this._blockName; }
-    get model()     : Model { return this._model; }
+    get handleToOwner(): string { return this._handleToOwner; }
+    get blockName(): string { return this._blockName; }
+    get flag(): number { return this._flag; }
+    get model(): Model { return this._model; }
 
+    set flag(value: number) { this._flag = value }
     set handleToOwner(value: string) { this._handleToOwner = value; }
 
-    private readonly    _blockName      :   string;
-    private             _handleToOwner  :   string;
-    private readonly    _endBlockHandle :   string;
+    private readonly _blockName: string;
+    private _flag: number = 0;
+    private _handleToOwner: string;
+    private readonly _endBlockHandle: string;
 
-    private readonly _model : Model;
+    private readonly _model: Model;
 
     public constructor(name: string) {
         super();
-        this._blockName         = name;
-        this._handleToOwner     = '0';
-        this._endBlockHandle    = this.handleSeed();
+        this._blockName = name;
+        this._handleToOwner = '0';
+        this._endBlockHandle = this.handleSeed();
         this._model = new Model();
     }
 
@@ -33,7 +36,7 @@ export default class Block extends DXFManager {
             ...this.makeLayer('0'),
             ...this.makeSubclassMarker('AcDbBlockBegin'),
             ...this.makeName(this.blockName),
-            ...this.makeStandard([[70, 0]]),
+            ...this.makeStandard([[70, this._flag]]),
             ...this.makePoint(0, 0, 0, true),
             ...this.makeName(this.blockName, 3),
             ...this.makeStandard([[1, '']])
@@ -50,7 +53,7 @@ export default class Block extends DXFManager {
             ...this.makeSubclassMarker('AcDbBlockEnd')
         ];
     }
-     
+
     public tags(): Tag[] {
         let tags: Tag[] = [];
 
